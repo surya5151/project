@@ -20,9 +20,11 @@
 				placeholder="Enter email id " name="emailID"><br> <br>
 			<input type="submit" value="Get OTP">
 
-
 		</form>
+	
 	</div>
+	
+		<h1>${message}</h1>
 </body>
 
 <footer

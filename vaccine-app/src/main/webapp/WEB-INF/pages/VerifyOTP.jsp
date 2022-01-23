@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,19 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div align="center">
-<form action="">
+	<div align="center">
+		<form action="">
 
-<label>Enter OTP</label>
-<input type="Number">
+			<label>Enter OTP</label> <input type="Number"> <input
+				type="submit" value="VerifyOTP">
 
-<input type="submit" value="VerifyOTP">
-
-</form>
-
-
-</div>
-
+		</form>
+	</div>
+	<h1>${message}</h1>
 
 </body>
 </html>
