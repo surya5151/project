@@ -6,16 +6,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.xworkz.vaccine.service.RegistorService;
+import com.xworkz.vaccine.service.RegisterService;
 
 @Controller
 @RequestMapping("/")
-public class RegistorControler {
+public class RegisterControler {
 
 	@Autowired
-	private RegistorService registorService;
+	private RegisterService registorService;
 
-	public RegistorControler() {
+	public RegisterControler() {
 		System.out.println(this.getClass().getSimpleName() + " Bean Created");
 	}
 
@@ -29,7 +29,9 @@ public class RegistorControler {
 			model.addAttribute("message", "OTP Generated");
 
 			boolean isSendOTP = this.registorService.sendOTP(emailID, otp);
-			if (isSendOTP) {
+			boolean issaved = this.registorService.saveOTP(emailID, 0);
+
+			if (isSendOTP && issaved) {
 
 				model.addAttribute("message", "OTP SEND TO YOUR REGISTED MAIL ID");
 
@@ -43,5 +45,26 @@ public class RegistorControler {
 		}
 		return "/RegistorVaccine.jsp";
 
+	}
+	
+	
+
+	@RequestMapping("/verifyOTP.vaccine")
+	public String verifyOTP(@RequestParam Integer otp, Model model) {
+		System.out.println("invoked verifyOTP()");
+		if (this.registorService.validateVerifyOTP(otp)) {
+			if (this.registorService.verifyOTP(otp)) {
+				System.out.println("OTP varified");
+				model.addAttribute("OTP_Verified", "OTP Verified....");
+				return "/WEB-INF/pages/VerifyOTP.jsp";
+			} else {
+				model.addAttribute("Wrong_OTP_Entered", "Wrong OTP Entered!!!!!");
+				return "/WEB-INF/pages/VerifyOTP.jsp";
+			}
+		} else {
+			model.addAttribute("Invalid_OTP_Entered", "Invalid OTP Entered!!!");
+			return "/WEB-INF/pages/VerifyOTP.jsp";
+
+		}
 	}
 }

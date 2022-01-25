@@ -6,16 +6,33 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
+
+<header
+	style="color: white; margin-top: 0%; text-align: center; font-style: oblique; border-style: groove; border-color: aqua; background-color: blue;">
+<h1>Well come to Ministry of Health and Family Welfare</h1>
+</header>
+
+
+
 <body>
 	<div align="center">
-		<form action="">
+		<form action="verifyOTP.vaccine">
+		<h3>OTP Verification</h3>
+		<h4 style="color: green; text-align: center;">${OTP_Verified}</h4>
+		<h4 style="color: yellow; text-align: center;">${Wrong_OTP_Entered}</h4>
+		<h4 style="color: red;text-align: center;">${Invalid_OTP_Entered}</h4>
 
 			<label>Enter OTP</label> <input type="Number"> <input
 				type="submit" value="VerifyOTP">
 
 		</form>
 	</div>
-	<h1>${message}</h1>
 
 </body>
+
+<footer
+	style="color: white; margin-top:20%; text-align: center; font-style: oblique; border-style: groove; border-color: aqua; background-color: blue;">
+<h1>CopyRight @2022 COWIN. All Right Reserved</h1>
+</footer>
+
 </html>
