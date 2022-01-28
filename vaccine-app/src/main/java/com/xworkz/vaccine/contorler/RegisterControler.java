@@ -13,7 +13,9 @@ import com.xworkz.vaccine.service.RegisterService;
 public class RegisterControler {
 
 	@Autowired
-	private RegisterService registorService;
+	private RegisterService registerService;
+
+	public static String emailID;
 
 	public RegisterControler() {
 		System.out.println(this.getClass().getSimpleName() + " Bean Created");
@@ -23,13 +25,16 @@ public class RegisterControler {
 	public String onGetOTPButtonClicked(@RequestParam String emailID, Model model) {
 		System.out.println("Invoked onGetOTPButtonClicked()");
 
-		boolean result = this.registorService.vaildateEmail(emailID);
+		RegisterControler.emailID = emailID;
+
+		boolean result = this.registerService.vaildateEmail(emailID);
 		if (result) {
-			Number otp = this.registorService.getOTP();
+			int otp = this.registerService.getOTP();
 			model.addAttribute("message", "OTP Generated");
 
-			boolean isSendOTP = this.registorService.sendOTP(emailID, otp);
-			boolean issaved = this.registorService.saveOTP(emailID, 0);
+			boolean isSendOTP = this.registerService.sendOTP(emailID, otp);
+
+			boolean issaved = this.registerService.saveOTP(emailID, otp);
 
 			if (isSendOTP && issaved) {
 
@@ -43,28 +48,8 @@ public class RegisterControler {
 		} else {
 			model.addAttribute("message", "OTP Not Generated...!!!");
 		}
-		return "/RegistorVaccine.jsp";
+		return "/RegisterVaccine.jsp";
 
 	}
-	
-	
 
-	@RequestMapping("/verifyOTP.vaccine")
-	public String verifyOTP(@RequestParam Integer otp, Model model) {
-		System.out.println("invoked verifyOTP()");
-		if (this.registorService.validateVerifyOTP(otp)) {
-			if (this.registorService.verifyOTP(otp)) {
-				System.out.println("OTP varified");
-				model.addAttribute("OTP_Verified", "OTP Verified....");
-				return "/WEB-INF/pages/VerifyOTP.jsp";
-			} else {
-				model.addAttribute("Wrong_OTP_Entered", "Wrong OTP Entered!!!!!");
-				return "/WEB-INF/pages/VerifyOTP.jsp";
-			}
-		} else {
-			model.addAttribute("Invalid_OTP_Entered", "Invalid OTP Entered!!!");
-			return "/WEB-INF/pages/VerifyOTP.jsp";
-
-		}
-	}
 }

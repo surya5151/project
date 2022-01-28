@@ -6,7 +6,11 @@ public interface OTPDAO {
 	
 	boolean saveOTPEntity(UserOTPEntity userOTPEntity);
 	
-	Integer isOTPPresent(Integer otp);
+	int isOTPPresent(int otp);
+	
+	int getOTPByEmail(String emailID);
+	
+	boolean updateOTPDetails(UserOTPEntity userOTPEntity);
 	
 	
 

@@ -14,9 +14,9 @@
 	style="background-image: url('C:/Users/Surya/Desktop/JAVA images/covid-vaccine-getty.jpg'); background-repeat: no-repeat; background-size: 100%;">
 
 	<div align="center">
-		<h1>Registor for Covid Vaccine</h1>
+		<h1>Register for Covid Vaccinations</h1>
 		<form action="getOTP.vaccine">
-			<label>Enter Emil ID </label> <input type="text"
+			<label>Email ID: </label> <input type="text"
 				placeholder="Enter email id " name="emailID"><br> <br>
 			<input type="submit" value="Get OTP">
 

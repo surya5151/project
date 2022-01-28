@@ -5,14 +5,17 @@ public interface RegisterService {
 	
 	boolean vaildateEmail(String email);
 	
-	Number getOTP();
+	int getOTP();
 	
-	boolean sendOTP(String email, Number otp);
+	boolean sendOTP(String email, int otp);
 	
 	boolean saveOTP(String email, int otp);
 	
-	boolean validateVerifyOTP(Integer otp);
+	boolean validateVerifyOTP(int otp);
 	
-	boolean verifyOTP(Integer otp);
-
+	boolean compareOTP(int otp, String emailID);
+	
+	boolean UpdateOTPInDB(int newotp, String emailID);
+	
+	
 }

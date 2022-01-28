@@ -35,14 +35,14 @@ public class RegisterServiceImpl implements RegisterService {
 	}
 
 	@Override
-	public Number getOTP() {
+	public int getOTP() {
 		System.out.println("Invoked getOTP()");
 
 		return OTPGenerator.generateOTP();
 	}
 
 	@Override
-	public boolean sendOTP(String email, Number otp) {
+	public boolean sendOTP(String email, int otp) {
 		System.out.println("Invoked sendOTP()");
 
 		try {
@@ -69,32 +69,51 @@ public class RegisterServiceImpl implements RegisterService {
 
 		UserOTPEntity otpEntity = new UserOTPEntity();
 
-		BeanUtils.copyProperties(email, otpEntity);
+		otpEntity.setEmailID(email);
+		otpEntity.setOtp(otp);
+
 		boolean result = this.otpdao.saveOTPEntity(otpEntity);
 
 		return result;
 	}
 
 	@Override
-	public boolean validateVerifyOTP(Integer otp) {
+	public boolean validateVerifyOTP(int otp) {
 		System.out.println("Invoked validateVerifyOTP()");
-		if (otp != null) {
+		if (otp != 0) {
 			return true;
 		}
 		return false;
 	}
 
 	@Override
-	public boolean verifyOTP(Integer otp) {
-		System.out.println("Invoked verifyOTP()");
+	public boolean compareOTP(int otp, String emailID) {
+		System.out.println("Invoked compareOTP()");
 
-		Integer otpValue = this.otpdao.isOTPPresent(otp);
+		int userotp = this.otpdao.getOTPByEmail(emailID);
 
-		if (otpValue != null) {
-			System.out.println("Inside null check");
-			if (otpValue.compareTo(otp) == 0) {
-				return true;
-			}
+		if (otp == userotp) {
+
+			System.out.println("OTP is Matching" + otp + " " + userotp);
+			return true;
+		} else {
+			System.out.println("OTP is Not matched");
+			return false;
+		}
+
+	}
+
+	@Override
+	public boolean UpdateOTPInDB(int newotp, String emailID) {
+
+		UserOTPEntity entity = new UserOTPEntity();
+
+		entity.setEmailID(emailID);
+		entity.setOtp(newotp);
+
+		boolean isUpdated = this.otpdao.updateOTPDetails(entity);
+		if (isUpdated) {
+			return true;
 		}
 
 		return false;

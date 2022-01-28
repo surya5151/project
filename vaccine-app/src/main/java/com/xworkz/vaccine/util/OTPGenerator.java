@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class OTPGenerator {
 	
-	public static Number generateOTP() {
+	public static int generateOTP() {
 		System.out.println("Invoked generateOTP()");
 		
 		Random random = new Random();
