@@ -1,5 +1,6 @@
 package com.xworkz.vaccine.dao;
 
+import com.xworkz.vaccine.entity.SignUpEntity;
 import com.xworkz.vaccine.entity.UserOTPEntity;
 
 public interface OTPDAO {
@@ -12,6 +13,6 @@ public interface OTPDAO {
 	
 	boolean updateOTPDetails(UserOTPEntity userOTPEntity);
 	
-	
+	boolean saveSignUPEntity(SignUpEntity signUpEntity);
 
 }

@@ -7,7 +7,9 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.xworkz.vaccine.entity.SignUpEntity;
 import com.xworkz.vaccine.entity.UserOTPEntity;
+import com.xworkz.vaccine.util.PasswordEncrypt;
 
 @Repository
 public class OTPDAOImpl implements OTPDAO {
@@ -83,20 +85,20 @@ public class OTPDAOImpl implements OTPDAO {
 	public int getOTPByEmail(String emailID) {
 		System.out.println("getOTPByEmail() in DAOImpl");
 		Session session = null;
-		System.out.println("This is Enter EmailID: "+emailID);
+		System.out.println("This is Enter EmailID: " + emailID);
 		try {
-			session = sessionFactory.openSession();				
-			Query query = session.getNamedQuery("UserOTPEntity.getOTPByEmail");			
-			query.setParameter("EMAILID", emailID); //position , value
+			session = sessionFactory.openSession();
+			Query query = session.getNamedQuery("UserOTPEntity.getOTPByEmail");
+			query.setParameter("EMAILID", emailID); // position , value
 			System.out.println("After setParameter...");
-			Object result = query.uniqueResult();  
+			Object result = query.uniqueResult();
 			System.out.println("After uniqueResult()...");
 
 			Integer otp = (Integer) result;
 			System.out.println("OTP From Email:" + otp);
 
 			if (otp != null) {
-				System.out.println("EmailID found in DB:" +emailID);
+				System.out.println("EmailID found in DB:" + emailID);
 
 				return otp;
 			} else {
@@ -124,32 +126,64 @@ public class OTPDAOImpl implements OTPDAO {
 
 	@Override
 	public boolean updateOTPDetails(UserOTPEntity userOTPEntity) {
-		
+
 		System.out.println("updateOTPDetails() in DAOImpl");
-		
-		Session session=null;
+
+		Session session = null;
 		try {
-			 session = sessionFactory.openSession();
-			 session.getTransaction().begin();
-			 String hqlQuery="UPDATE UserOTPEntity SET otp=:otp WHERE emailID=:emailID";
-			 Query query = session.createQuery(hqlQuery);
-			 query.setParameter("emailID", userOTPEntity.getEmailID());
-			 query.setParameter("otp", userOTPEntity.getOtp());
-			 query.executeUpdate();
-			 session.getTransaction().commit();
-			 return true;		
-			
+			session = sessionFactory.openSession();
+			session.getTransaction().begin();
+			String hqlQuery = "UPDATE UserOTPEntity SET otp=:otp WHERE emailID=:emailID";
+			Query query = session.createQuery(hqlQuery);
+			query.setParameter("emailID", userOTPEntity.getEmailID());
+			query.setParameter("otp", userOTPEntity.getOtp());
+			query.executeUpdate();
+			session.getTransaction().commit();
+			return true;
+
 		} catch (HibernateException e) {
 			session.getTransaction().rollback();
 			e.printStackTrace();
 			System.out.println("Session is rollBacked");
-		}finally {
+		} finally {
 			if (session != null) {
 				session.close();
 				System.out.println("Session is closed");
 			} else {
 				System.out.println("Session is not closed");
 
+			}
+		}
+
+		return false;
+	}
+
+	@Override
+	public boolean saveSignUPEntity(SignUpEntity signUpEntity) {
+		System.out.println("Invoked saveSignUPEntity()");
+		
+		Session session=null;
+		try {
+			
+			session=sessionFactory.openSession();
+			session.beginTransaction();
+			signUpEntity.setPassword(PasswordEncrypt.encryptPassword(signUpEntity.getPassword()));
+			session.save(signUpEntity);
+			session.getTransaction().commit();
+			System.out.println("SignUp Entity is saved");
+			return true;		
+			
+		} catch (HibernateException e) {
+			session.getTransaction().rollback();
+			System.out.println("Transaction is roll back");
+
+		} finally {
+			if (session != null) {
+				session.close();
+				System.out.println("Session is closed");
+
+			} else {
+				System.out.println("Session is not closed");
 			}
 		}
 

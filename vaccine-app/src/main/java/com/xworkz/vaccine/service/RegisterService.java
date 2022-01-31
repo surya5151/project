@@ -1,5 +1,7 @@
 package com.xworkz.vaccine.service;
 
+import com.xworkz.vaccine.dto.SignUpDTO;
+
 public interface RegisterService {
 	
 	
@@ -17,5 +19,7 @@ public interface RegisterService {
 	
 	boolean UpdateOTPInDB(int newotp, String emailID);
 	
+	boolean vaildateSignUPDTO( SignUpDTO signUpDTO);
 	
+	boolean saveSignUPDTO( SignUpDTO signUpDTO);
 }

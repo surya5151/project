@@ -25,25 +25,27 @@
 			</props>
 		</property>
 	</bean>
-	
-	
-<bean
+
+
+	<bean
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"
 		id="localsessionFactory">
 		<property name="dataSource" ref="driverManagerDataSource"></property>
 		<property name="annotatedClasses">
 			<list>
 				<value>com.xworkz.vaccine.entity.UserOTPEntity</value>
+				<value>com.xworkz.vaccine.entity.SignUpEntity</value>
+
 			</list>
 		</property>
 
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.format_sql">true</prop> 
-				<prop key="hibernate.hbm2ddl.auto">update</prop>	
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</prop>
-					
+
 			</props>
 		</property>
 
@@ -66,7 +68,8 @@
 
 	<bean
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="locations" value="/WEB-INF/classes/class.properties"></property>
+		<property name="locations"
+			value="/WEB-INF/classes/class.properties"></property>
 
 	</bean>
 
