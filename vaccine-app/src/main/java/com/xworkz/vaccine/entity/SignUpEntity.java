@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.sql.*;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Target;
@@ -21,10 +22,10 @@ import lombok.Data;
 public class SignUpEntity {
 
 	@Id
-	@GeneratedValue(generator="SIGNUP_ID") //present in jpa for generating unique and auto increment value
-	@GenericGenerator(name="SIGNUP_ID",strategy="increment")
+//	@GeneratedValue(generator="SIGNUP_ID") //present in jpa for generating unique and auto increment value
+//	@GenericGenerator(name="SIGNUP_ID",strategy="increment")
 	
-	//@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 
 	@Column(name = "SIGNUP_ID")
 	private int ID;
@@ -33,16 +34,18 @@ public class SignUpEntity {
 	private String userName;
 
 	@Column(name = "SIGNUP_PHONENO")
-	private long phoneNo;
+	private Long phoneNo;
 
 	@Column(name = "SIGNUP_GENDER")
 	private String gender;
 
 	@Column(name = "SIGNUP_DOB")
-	@DateTimeFormat(pattern="yyyy-mm-dd")
-	private Date dob;
+	private String dob;
 
 	@Column(name = "SIGNUP_PASSWORD")
 	private String password;
+	
+	@Column(name = "SIGNUP_EMAILID")
+	private String emailID;
 
 }

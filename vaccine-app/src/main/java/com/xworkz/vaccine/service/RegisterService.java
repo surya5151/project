@@ -17,9 +17,6 @@ public interface RegisterService {
 	
 	boolean compareOTP(int otp, String emailID);
 	
-	boolean UpdateOTPInDB(int newotp, String emailID);
+	boolean UpdateOTPInDB(int newotp, String emailID);	
 	
-	boolean vaildateSignUPDTO( SignUpDTO signUpDTO);
-	
-	boolean saveSignUPDTO( SignUpDTO signUpDTO);
 }

@@ -158,36 +158,5 @@ public class OTPDAOImpl implements OTPDAO {
 		return false;
 	}
 
-	@Override
-	public boolean saveSignUPEntity(SignUpEntity signUpEntity) {
-		System.out.println("Invoked saveSignUPEntity()");
-		
-		Session session=null;
-		try {
-			
-			session=sessionFactory.openSession();
-			session.beginTransaction();
-			signUpEntity.setPassword(PasswordEncrypt.encryptPassword(signUpEntity.getPassword()));
-			session.save(signUpEntity);
-			session.getTransaction().commit();
-			System.out.println("SignUp Entity is saved");
-			return true;		
-			
-		} catch (HibernateException e) {
-			session.getTransaction().rollback();
-			System.out.println("Transaction is roll back");
-
-		} finally {
-			if (session != null) {
-				session.close();
-				System.out.println("Session is closed");
-
-			} else {
-				System.out.println("Session is not closed");
-			}
-		}
-
-		return false;
-	}
-
+	
 }

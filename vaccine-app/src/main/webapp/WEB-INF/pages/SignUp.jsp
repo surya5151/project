@@ -14,23 +14,38 @@
 <body>
 	<div align="left">
 		<form action="createAccount.vaccine">
-			<h1 style="color: red; text-align: center;">Well come to SignUP
-				Or Create Account</h1>
-			<label>User Name: </label><input placeholder="Enter your Name"
-				type="text" name="userName"><br> <br> <label>Phone
-				No: </label><input placeholder="Enter your Contact No" type="tel"
-				name="phoneNo"><br> <br> <label>Gender: </label> <input
-				type="radio" name="gender"><label>Male</label> <input
-				type="radio" name="gender"><label>Female</label> <input
-				type="radio" name="gender"><label>Others</label><br> <br>
-			<label>Enter DOB: </label><input type="date" name="dob"><br>
-			<br> <label>Password: </label><input type="password"
-				name="password" placeholder="Enter Your Password"><br>
-			<br> <label>Confirm-Password: </label><input type="password"
-				placeholder="Re-Enter Your Password"><br> <br> <input
-				type="Submit" value="Create Your Account">
+			<h1 style="color: red; text-align: center;">Well come to SignUP Or Create Account</h1>
+			<label>User Name: </label><input placeholder="Enter your Name" type="text" name="userName">
+			<p style="color: red;">${UserNameNotValid}</p>
+		
+				<label>Phone No: </label><input placeholder="Enter your Contact No" type="tel"
+				name="phoneNo"><br> <br> 
+			<p style="color: red;">${NumberNotValid}</p>
+				
+				<label>Gender: </label> <input
+				type="radio" name="gender" value="Male"><label>Male</label> <input
+				type="radio" name="gender" value="Female"><label>Female</label> <input
+				type="radio" name="gender" value="other"><label>Others</label><br> <br>
+			<p style="color: red;">${GenderNotValid}</p>
+				
+			<label>Enter DOB: </label><input type="date" name="dob">
+			<p style="color: red;">${DOBNotValid}</p>
+		 
+			<label>Password: </label><input type="password"
+				name="password" placeholder="Enter Your Password">
+			<p style="color: red;">${PasswordNotValid}</p>
+				
+			
+			<label>Confirm-Password: </label><input type="password"
+				name="confirmPassword" placeholder="Re-Enter Your Password">
+			<p style="color: red;">${ConfirmPasswordNotValid}</p>
+				
+				
+				 <input	type="Submit" value="Create Your Account">
 
-			<h1>${Message}</h1>
+		<h1>${Signup_Message_sucess}</h1>
+		<h1>${Signup_Message_error}</h1>
+		
 
 		</form>
 	</div>

@@ -13,6 +13,6 @@ public interface OTPDAO {
 	
 	boolean updateOTPDetails(UserOTPEntity userOTPEntity);
 	
-	boolean saveSignUPEntity(SignUpEntity signUpEntity);
+	
 
 }

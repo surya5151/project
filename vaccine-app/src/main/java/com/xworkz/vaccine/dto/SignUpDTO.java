@@ -17,13 +17,11 @@ public class SignUpDTO {
 	
 	private String userName;
 	
-	private long phoneNo;
+	private Long phoneNo;
 	
 	private String gender;
 	
-	@DateTimeFormat(pattern="yyyy-mm-dd")
-	@Temporal(TemporalType.DATE)
-	private Date dob;
+	private String dob;
 	
 	private String password;
 	

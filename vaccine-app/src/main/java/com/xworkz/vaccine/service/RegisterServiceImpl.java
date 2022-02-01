@@ -1,5 +1,7 @@
 package com.xworkz.vaccine.service;
 
+import java.util.HashMap;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSender;
@@ -21,6 +23,9 @@ public class RegisterServiceImpl implements RegisterService {
 
 	@Autowired
 	private OTPDAO otpdao;
+
+
+		
 
 	public RegisterServiceImpl() {
 		System.out.println(this.getClass().getSimpleName() + " Bean Created");
@@ -121,72 +126,6 @@ public class RegisterServiceImpl implements RegisterService {
 		return false;
 	}
 
-	@Override
-	public boolean vaildateSignUPDTO(SignUpDTO signUpDTO) {
-
-		System.out.println("Invoked vaildateSignUPDTO");
-
-		boolean flag = true;
-
-		if (signUpDTO.getUserName() != null) {
-			flag = true;
-		} else {
-			flag = false;
-			System.err.println("Invalid UserName");
-			return flag;
-		}
-
-		if (Long.valueOf(signUpDTO.getPhoneNo()) != null) {
-			flag = true;
-		} else {
-			flag = false;
-			System.err.println("Invlid 10digt Number");
-			return flag;
-		}
-
-		if (signUpDTO.getGender() != null && !signUpDTO.getGender().isEmpty()) {
-			flag = true;
-		} else {
-			flag = false;
-			System.err.println("Invalid Gender");
-			return flag;
-		}
-
-//		if (signUpDTO.getDob() != null) {
-//			flag = true;
-//		} else {
-//			flag = false;
-//			System.err.println("Invalid DOB");
-//			return flag;
-//		}
-
-		if (signUpDTO.getPassword() != null && !signUpDTO.getPassword().isEmpty()) {
-			flag = true;
-			if (signUpDTO.getConfirmPassword() != null && !signUpDTO.getConfirmPassword().isEmpty()) {
-				flag = true;
-				if (signUpDTO.getPassword().equals(signUpDTO.getConfirmPassword())) {
-					flag = true;
-				} else {
-					flag = false;
-					System.err.println("Password not matched......");
-					return flag;
-				}
-			}
-		}
-		return flag;
-	}
-
-	@Override
-	public boolean saveSignUPDTO(SignUpDTO signUpDTO) {
-
-		SignUpEntity signUpEntity = new SignUpEntity();
-		BeanUtils.copyProperties(signUpDTO, signUpEntity);
-
-		boolean saveSignUPEntity = this.otpdao.saveSignUPEntity(signUpEntity);
-		if (saveSignUPEntity) {
-			return true;
-		}
-		return false;
-	}
+	
 
 }
