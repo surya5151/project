@@ -13,9 +13,9 @@ public interface SignUpService {
 
 	boolean saveSignUPDTO(SignUpDTO signUpDTO);
 	
-	boolean sendSignupMail(String emailId);
-	
-	String getPassword(String emailId);
-	
+//	boolean sendSignupMail(String emailId);
+//	
+//	String getPassword(String emailId);
+//	
 
 }

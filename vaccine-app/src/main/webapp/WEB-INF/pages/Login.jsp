@@ -20,8 +20,8 @@
 
 	<div align="center">
 		<form action="login.vaccine">
-			<label>Enter Email ID: </label> <input type="text" name="userName"><br><br>
-			<label>Enter Password</label> <input type="text" name="password"><br><br>
+			<label>Enter UserName : </label> <input type="text" name="userName"><br><br>
+			<label>Enter Password:</label> <input type="text" name="password"><br><br>
 			
 			<input type="submit" value="Sign in">
 

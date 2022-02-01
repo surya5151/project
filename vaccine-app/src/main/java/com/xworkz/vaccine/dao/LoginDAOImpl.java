@@ -24,8 +24,11 @@ public class LoginDAOImpl implements LoginDAO {
 			String hqlquery = "SELECT password FROM SignUpEntity WHERE userName=:USERNAME";
 			Query query = session.createQuery(hqlquery);
 			query.setParameter("USERNAME", userName);
+			
+			System.out.println("Before uniqueResult()..");			
 			String password = (String) query.uniqueResult();
 			System.out.println("After uniqueResult()..");
+			
 			System.out.println("password is: " + password);
 			return password;
 

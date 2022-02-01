@@ -118,40 +118,40 @@ public class SignUpServiceImpl implements SignUpService {
 		return false;
 	}
 
-	@Override
-	public boolean sendSignupMail(String emailId) {
-		System.out.println("Invoked sendSignupMail()");
-
-		try {
-			String password = "";
-
-			if (encrypt.matches(signUpControler.password, this.getPassword(emailId))) {
-				password = signUpControler.password;
-			}
-			SimpleMailMessage mailMessage = new SimpleMailMessage();
-			mailMessage.setTo(emailId);
-			mailMessage.setSubject("Geting password & vaccian signup sucess...");
-			mailMessage.setText("A/C created for vaccine and password for login is " + password);
-			mailsender.send(mailMessage);
-			return true;
-		} catch (Exception e) {
-
-			System.out.println(e.getMessage());
-		}
-
-		return false;
-	}
-
-	@Override
-	public String getPassword(String emailId) {
-		System.out.println("Invoked getPassword()");
-
-		String DBpassword = this.signUpDAO.getPassword(emailId);
-		
-		if(DBpassword !=null) {
-			return DBpassword;
-		}
-		return null;
-	}
+//	@Override
+//	public boolean sendSignupMail(String emailId) {
+//		System.out.println("Invoked sendSignupMail()");
+//
+//		try {
+//			String password = "";
+//
+//			if (encrypt.matches(signUpControler.password, this.getPassword(emailId))) {
+//				password = signUpControler.password;
+//			}
+//			SimpleMailMessage mailMessage = new SimpleMailMessage();
+//			mailMessage.setTo(emailId);
+//			mailMessage.setSubject("Geting password & vaccian signup sucess...");
+//			mailMessage.setText("A/C created for vaccine and password for login is " + password);
+//			mailsender.send(mailMessage);
+//			return true;
+//		} catch (Exception e) {
+//
+//			System.out.println(e.getMessage());
+//		}
+//
+//		return false;
+//	}
+//
+//	@Override
+//	public String getPassword(String emailId) {
+//		System.out.println("Invoked getPassword()");
+//
+//		String DBpassword = this.signUpDAO.getPassword(emailId);
+//		
+//		if(DBpassword !=null) {
+//			return DBpassword;
+//		}
+//		return null;
+//	}
 
 }

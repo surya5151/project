@@ -5,6 +5,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.xworkz.vaccine.dao.LoginDAO;
+import com.xworkz.vaccine.dto.SignUpDTO;
 
 @Service
 public class LoginServiceImpl implements LoginService {
@@ -14,6 +15,8 @@ public class LoginServiceImpl implements LoginService {
 
 	@Autowired
 	private BCryptPasswordEncoder encrypt;
+
+	private SignUpDTO signUpDTO;
 
 	@Override
 	public boolean vaildateLoginUser(String userName, String password) {
