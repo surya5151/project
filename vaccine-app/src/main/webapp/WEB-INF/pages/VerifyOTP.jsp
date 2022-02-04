@@ -12,6 +12,7 @@
 	<h1>Well come to Ministry of Health and Family Welfare</h1>
 </header>
 
+			<h1 style="color: lime; text-align: center;">Welcome to OTP Verification page</h1>
 
 <h3>An OTP send to your email....</h3>
 <body>
@@ -19,7 +20,7 @@
 	
 		<form action="verifyOTP.vaccine">
 		
-			<h3>OTP Verification page</h3>
+			
 			<h4 style="color: red; text-align: center;">${OTP_Verified}</h4>
 			<h4 style="color: yellow; text-align: center;">${Wrong_OTP_Entered}</h4>
 			<h4 style="color: red; text-align: center;">${Invalid_OTP_Entered}</h4>

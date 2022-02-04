@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.xworkz.vaccine.dao.LoginDAO;
 import com.xworkz.vaccine.dto.SignUpDTO;
+import com.xworkz.vaccine.entity.SignUpEntity;
 
 @Service
 public class LoginServiceImpl implements LoginService {
@@ -16,10 +17,10 @@ public class LoginServiceImpl implements LoginService {
 	@Autowired
 	private BCryptPasswordEncoder encrypt;
 
-	private SignUpDTO signUpDTO;
+	public static int loginAttempt = 0;
 
 	@Override
-	public boolean vaildateLoginUser(String userName, String password) {
+	public boolean validateLoginUser(String userName, String password) {
 		System.out.println("Invoked vaildateLogin");
 
 		boolean flag = true;
@@ -48,6 +49,26 @@ public class LoginServiceImpl implements LoginService {
 
 		String DBPassword = this.loginDAO.isUserExist(userName);
 		if (this.encrypt.matches(password, DBPassword)) {
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public boolean NoOfloginAttemptExceeded(String userName) {
+		System.out.println("Invoked NoOfloginAttemptExceeded");
+		LoginServiceImpl.loginAttempt = this.loginDAO.updateLoginAttempt(userName, LoginServiceImpl.loginAttempt);
+		if (LoginServiceImpl.loginAttempt == 3) {
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public boolean checkLoginAttemptExceeded(String userName) {
+		System.out.println("Invoked checkLoginAttemptExceeded()");
+		int attempt = this.loginDAO.getUpdateAttempt(userName);
+		if (attempt == 3) {
 			return true;
 		}
 		return false;

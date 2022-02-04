@@ -47,5 +47,9 @@ public class SignUpEntity {
 	
 	@Column(name = "SIGNUP_EMAILID")
 	private String emailID;
+	
+	@Column(name="LOGIN_ATTEMPT")
+	private int loginAttempt;
+	
 
 }

@@ -17,6 +17,11 @@ public class RegisterControler {
 
 	public static String emailID;
 
+	public String getEmailId() {
+		return RegisterControler.emailID;
+
+	}
+
 	public RegisterControler() {
 		System.out.println(this.getClass().getSimpleName() + " Bean Created");
 	}

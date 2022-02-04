@@ -42,22 +42,21 @@ public class SignUpServiceImpl implements SignUpService {
 
 		boolean flag = true;
 
-		if (signUpDTO.getUserName() != null) {
+		if (signUpDTO.getUserName() != null && !signUpDTO.getUserName().isEmpty()) {
 			flag = true;
 		} else {
 			flag = false;
-			System.err.println("Invalid UserName");
-
+			
 			errorMap.put("INVALID_USERNAME", "Invalid UserName");
 
 			return flag;
 		}
 
-		if (signUpDTO.getPhoneNo() != null) {
+		if (signUpDTO.getPhoneNo() != null ) {
 			flag = true;
 		} else {
 			flag = false;
-			System.err.println("Invlid Number");
+		
 			errorMap.put("INVLID_NUMBER", "Invlid Number");
 
 			return flag;
@@ -67,17 +66,17 @@ public class SignUpServiceImpl implements SignUpService {
 			flag = true;
 		} else {
 			flag = false;
-			System.err.println("Invalid Gender");
+		
 			errorMap.put("INVLID_GENDER", "Invlid Gender");
 
 			return flag;
 		}
 
-		if (signUpDTO.getDob() != null) {
+		if (signUpDTO.getDob() != null && !signUpDTO.getDob().isEmpty()) {
 			flag = true;
 		} else {
 			flag = false;
-			System.err.println("Invalid DOB");
+			
 			errorMap.put("INVLID_DOB", "Invlid DOB");
 			return flag;
 		}
@@ -86,7 +85,6 @@ public class SignUpServiceImpl implements SignUpService {
 			flag = true;
 		} else {
 			flag = false;
-			System.err.println("Password Invalid......");
 			errorMap.put("PASSWORD_INVALID", "Password Invalid");
 			return flag;
 		}
@@ -95,7 +93,7 @@ public class SignUpServiceImpl implements SignUpService {
 			flag = true;
 		} else {
 			flag = false;
-			System.err.println("Password not matched......");
+			System.err.println("Password not matching");
 			errorMap.put("PASSWORD_NOT_MATCHED", "Password not matched");
 			return flag;
 		}
@@ -118,40 +116,40 @@ public class SignUpServiceImpl implements SignUpService {
 		return false;
 	}
 
-//	@Override
-//	public boolean sendSignupMail(String emailId) {
-//		System.out.println("Invoked sendSignupMail()");
-//
-//		try {
-//			String password = "";
-//
-//			if (encrypt.matches(signUpControler.password, this.getPassword(emailId))) {
-//				password = signUpControler.password;
-//			}
-//			SimpleMailMessage mailMessage = new SimpleMailMessage();
-//			mailMessage.setTo(emailId);
-//			mailMessage.setSubject("Geting password & vaccian signup sucess...");
-//			mailMessage.setText("A/C created for vaccine and password for login is " + password);
-//			mailsender.send(mailMessage);
-//			return true;
-//		} catch (Exception e) {
-//
-//			System.out.println(e.getMessage());
-//		}
-//
-//		return false;
-//	}
-//
-//	@Override
-//	public String getPassword(String emailId) {
-//		System.out.println("Invoked getPassword()");
-//
-//		String DBpassword = this.signUpDAO.getPassword(emailId);
-//		
-//		if(DBpassword !=null) {
-//			return DBpassword;
-//		}
-//		return null;
-//	}
+	@Override
+	public boolean sendSignupMail(String emailId) {
+		System.out.println("Invoked sendSignupMail()");
+
+		try {
+			String password = "";
+
+			if (encrypt.matches(signUpControler.password, this.getPassword(emailId))) {
+				password = signUpControler.password;
+			}
+			SimpleMailMessage mailMessage = new SimpleMailMessage();
+			mailMessage.setTo(emailId);
+			mailMessage.setSubject("Geting password & vaccian signup sucess...");
+			mailMessage.setText("A/C created for vaccine and password for login is " + password);
+			mailsender.send(mailMessage);
+			return true;
+		} catch (Exception e) {
+
+			System.out.println(e.getMessage());
+		}
+
+		return false;
+	}
+
+	@Override
+	public String getPassword(String emailId) {
+		System.out.println("Invoked getPassword()");
+
+		String DBpassword = this.signUpDAO.getPassword(emailId);
+		
+		if(DBpassword !=null) {
+			return DBpassword;
+		}
+		return null;
+	}
 
 }

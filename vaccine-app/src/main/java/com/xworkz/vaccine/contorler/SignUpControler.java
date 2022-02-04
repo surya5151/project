@@ -36,6 +36,7 @@ public class SignUpControler {
 	@RequestMapping("/createAccount.vaccine")
 	public String OnCreateAccount(@ModelAttribute SignUpDTO signUpDTO, Model model) {
 		System.out.println("Invoked OnCreateAccount");
+		
 		System.out.println("sign up dto is " + signUpDTO);
 
 		boolean vaildateSignUPDTO = this.signUpService.vaildateSignUPDTO(signUpDTO);
@@ -43,8 +44,7 @@ public class SignUpControler {
 			boolean isSaved = this.signUpService.saveSignUPDTO(signUpDTO);
 
 			if (isSaved) {
-				
-				
+				this.signUpService.sendSignupMail(this.registerControler.emailID);		
 				
 				model.addAttribute("Signup_Message_sucess", "SignUp Details are saved");
 				return "/WEB-INF/pages/Login.jsp";
