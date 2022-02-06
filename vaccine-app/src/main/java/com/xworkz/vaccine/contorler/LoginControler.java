@@ -57,11 +57,10 @@ public class LoginControler {
 		
 		return "/WEB-INF/pages/ResetPassword.jsp";		
 	}
-	
-	
-	@RequestMapping("/loginPage.vaccine")
-	public String loginPageRedirect() {
-		return "/WEB-INF/pages/Login.jsp";
 		
-	}
+	@RequestMapping("/loginPage.vaccine")
+	public String getLoginPage() {
+		return "/WEB-INF/pages/Login.jsp";		
+	}	
+	
 }

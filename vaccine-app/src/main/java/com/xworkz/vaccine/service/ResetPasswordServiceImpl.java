@@ -11,10 +11,11 @@ public class ResetPasswordServiceImpl implements ResetPasswordService {
 
 	@Autowired
 	private BCryptPasswordEncoder encrypt;
-
+	
 	@Autowired
-	private ResetPasswordService resetPasswordService;
+	private LoginServiceImpl loginServiceImpl;
 
+	
 	@Autowired
 	private ResetPasswordDAOImpl resetPasswordDAOImpl;
 
@@ -36,12 +37,13 @@ public class ResetPasswordServiceImpl implements ResetPasswordService {
 	}
 
 	@Override
-	public boolean resetPassword(String password, String emailId) {
+	public boolean resetPassword(String password, String emailId) {  
 		System.out.println("Invoked resetPassword() in service........");
+		loginServiceImpl.loginAttempt=0;
 		String encode = encrypt.encode(password);
 		System.out.println("ResetPassword is:" + encode);
 
-		if (this.resetPasswordDAOImpl.resetPassword(encode, emailId)) {
+		if (this.resetPasswordDAOImpl.resetPassword(encode, emailId,loginServiceImpl.loginAttempt)) {
 			return true;
 		}
 

@@ -11,8 +11,12 @@
 	style="color: white; margin-top: 0%; text-align: center; font-style: oblique; border-style: groove; border-color: aqua; background-color: blue;">
 	<h1>Well come to Ministry of Health and Family Welfare</h1>
 </header>
+<header style="background-color:silver; font-style: italic; ">
+<a href="signUpPage.vaccine" style=" margin-left:10% ">signUP</a> 
+<a href="loginPage.vaccine" style="margin-left:70%">logIN</a>
+ </header>
 
-			<h1 style="color: lime; text-align: center;">Welcome to OTP Verification page</h1>
+			<h1 style="color:blue;text-align: center;">Welcome to OTP Verification page</h1>
 
 <h3>An OTP send to your email....</h3>
 <body>

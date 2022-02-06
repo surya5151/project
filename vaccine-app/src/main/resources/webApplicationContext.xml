@@ -35,6 +35,7 @@
 			<list>
 				<value>com.xworkz.vaccine.entity.UserOTPEntity</value>
 				<value>com.xworkz.vaccine.entity.SignUpEntity</value>
+				<value>com.xworkz.vaccine.entity.AddMemberEntity</value>
 
 			</list>
 		</property>

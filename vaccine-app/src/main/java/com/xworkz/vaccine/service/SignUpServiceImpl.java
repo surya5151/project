@@ -42,7 +42,7 @@ public class SignUpServiceImpl implements SignUpService {
 
 		boolean flag = true;
 
-		if (signUpDTO.getUserName() != null && !signUpDTO.getUserName().isEmpty()) {
+		if (signUpDTO != null && !signUpDTO.getUserName().isEmpty()) {
 			flag = true;
 		} else {
 			flag = false;
@@ -106,7 +106,6 @@ public class SignUpServiceImpl implements SignUpService {
 		signUpDTO.setPassword(encrypt.encode(signUpDTO.getPassword()));
 		SignUpEntity signUpEntity = new SignUpEntity();
 		BeanUtils.copyProperties(signUpDTO, signUpEntity);
-
 		signUpEntity.setEmailID(registerControler.emailID);
 
 		boolean saveSignUPEntity = this.signUpDAO.saveSignUPEntity(signUpEntity);

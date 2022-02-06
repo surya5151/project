@@ -11,10 +11,14 @@
 	style="color: white; margin-top: 0%; text-align: center; font-style: oblique; border-style: groove; border-color: aqua; background-color: blue;">
 	<h1>Well come to Ministry of Health and Family Welfare</h1>
 </header>
+<header style="background-color:silver; font-style: italic; ">
+<a href="signUpPage.vaccine" style=" margin-left:10% ">signUP</a> 
+<a href="loginPage.vaccine" style="margin-left:70%">logIN</a>
+ </header>
 <body>
 	<div align="left">
 		<form action="createAccount.vaccine">
-			<h1 style="color:lime; text-align: center;">Welcome to SignUP page and Create Your Account</h1>
+			<h1 style="color:blue; text-align: center;">Welcome to SignUP page and Create Your Account</h1>
 			<label>User Name: </label><input placeholder="Enter your Name" type="text" name="userName">
 			<p style="color: red;">${UserNameNotValid}</p>
 		
@@ -22,10 +26,10 @@
 				name="phoneNo">
 			<p style="color: red;">${NumberNotValid}</p>
 				
-				<label>Gender: </label> <input
-				type="radio" name="gender" value="Male"><label>Male</label> <input
-				type="radio" name="gender" value="Female"><label>Female</label> <input
-				type="radio" name="gender" value="other"><label>Others</label>
+				<label>Gender: </label> 
+				<input type="radio" name="gender" value="Male"><label>Male</label> 
+				<input type="radio" name="gender" value="Female"><label>Female</label>
+			    <input type="radio" name="gender" value="other"><label>Others</label>
 			<p style="color: red;">${GenderNotValid}</p>
 				
 			<label>Enter DOB: </label><input type="date" name="dob">

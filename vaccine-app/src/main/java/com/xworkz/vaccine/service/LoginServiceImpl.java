@@ -57,8 +57,8 @@ public class LoginServiceImpl implements LoginService {
 	@Override
 	public boolean NoOfloginAttemptExceeded(String userName) {
 		System.out.println("Invoked NoOfloginAttemptExceeded");
-		LoginServiceImpl.loginAttempt = this.loginDAO.updateLoginAttempt(userName, LoginServiceImpl.loginAttempt);
-		if (LoginServiceImpl.loginAttempt == 3) {
+		loginAttempt = this.loginDAO.updateLoginAttempt(userName, loginAttempt);
+		if (loginAttempt == 3) {
 			return true;
 		}
 		return false;

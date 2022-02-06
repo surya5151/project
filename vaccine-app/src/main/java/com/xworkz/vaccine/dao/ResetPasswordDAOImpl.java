@@ -15,11 +15,8 @@ public class ResetPasswordDAOImpl implements ResetPasswordDAO {
 	@Autowired
 	public SessionFactory sessionFactory;
 
-	@Autowired
-	public LoginServiceImpl loginServiceImpl;
-
 	@Override
-	public boolean resetPassword(String password, String emailId) {
+	public boolean resetPassword(String password, String emailId, int loginAttempt) {
 		System.out.println("Invoked resetPassword() in DAOimpl...");
 
 		Session session = null;
@@ -32,11 +29,11 @@ public class ResetPasswordDAOImpl implements ResetPasswordDAO {
 			query.setParameter("password", password);
 			int rowsUpdated = query.executeUpdate();
 
-			if (rowsUpdated >= 1) {
-				LoginServiceImpl.loginAttempt = 0;
-				String hqlLoginAttempt = "UPDATE SignUpEntity SET loginAttempt=0 WHERE emailID=:emailID";
+			if (rowsUpdated >= 1) { 
+				String hqlLoginAttempt = "UPDATE SignUpEntity SET loginAttempt=:loginAttempt WHERE emailID=:emailID";
 				Query query2 = session.createQuery(hqlLoginAttempt);
-				query2.setParameter("emailID", emailId);
+				query2.setParameter("loginAttempt", loginAttempt);
+				query2.setParameter("emailID", emailId);			
 				query2.executeUpdate();
 				System.out.println("After query2.executeUpdate................");
 			}

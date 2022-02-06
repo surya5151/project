@@ -1,6 +1,6 @@
 package com.xworkz.vaccine.entity;
 
-import java.sql.Date;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,11 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.sql.*;
-
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Target;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
 

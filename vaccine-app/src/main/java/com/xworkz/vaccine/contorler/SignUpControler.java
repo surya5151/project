@@ -38,7 +38,7 @@ public class SignUpControler {
 		System.out.println("Invoked OnCreateAccount");
 		
 		System.out.println("sign up dto is " + signUpDTO);
-
+ 
 		boolean vaildateSignUPDTO = this.signUpService.vaildateSignUPDTO(signUpDTO);
 		if (vaildateSignUPDTO) {
 			boolean isSaved = this.signUpService.saveSignUPDTO(signUpDTO);
@@ -70,5 +70,12 @@ public class SignUpControler {
 		return "/WEB-INF/pages/SignUp.jsp";
 
 	}
+	
+	@RequestMapping("/signUpPage.vaccine")
+	public String getSignUpPage() {
+		return "/WEB-INF/pages/SignUp.jsp";
+		
+	}
+	
 
 }

@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.xworkz.vaccine.entity.SignUpEntity;
-import com.xworkz.vaccine.util.PasswordEncrypt;
 
 @Repository
 public class SignUpDAOImpl implements SignUpDAO {

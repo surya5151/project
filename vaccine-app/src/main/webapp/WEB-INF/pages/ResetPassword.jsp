@@ -10,7 +10,16 @@
 	style="color: white; margin-top: 0%; text-align: center; font-style: oblique; border-style: groove; border-color: aqua; background-color: blue;">
 	<h1>Well come to Ministry of Health and Family Welfare</h1>
 </header>
-<h1>Reset password page</h1>
+
+<header style="background-color:silver; font-style: italic; ">
+<a href="signUpPage.vaccine" style=" margin-left:10% ">signUP</a> 
+<a href="loginPage.vaccine" style="margin-left:70%">logIN</a>
+ </header>
+
+
+ 
+
+<h1 style="text-align: center; color:blue;">Reset password page</h1>
 <body>
 
 <div align="center">
@@ -30,7 +39,7 @@
 
 <input type="submit" value="Reset"><br>
 
-<a href="loginPage.vaccine">Click Hear to Login</a>
+
 
 </form>
 
