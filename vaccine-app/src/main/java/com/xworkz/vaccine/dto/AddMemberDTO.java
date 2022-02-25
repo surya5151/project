@@ -20,7 +20,7 @@ public class AddMemberDTO {
 	
 	private String vaccineType;
 	
-	private String NoOfDose;
+	private String noOfDose;
 	
 	
 

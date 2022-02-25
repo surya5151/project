@@ -50,6 +50,44 @@ public class LoginDAOImpl implements LoginDAO {
 		return null;
 	}
 
+	
+	@Override
+	public int getUpdateAttempt(String userName) {
+		System.out.println("Invoked getUpdateAttempt()...in dao");
+
+		Session session = null;
+		try {
+			String passwordNullCheck = this.isUserExist(userName);
+			if (passwordNullCheck != null) {
+
+				session = sessionFactory.openSession();
+				String hqlQuery = "SELECT loginAttempt FROM SignUpEntity WHERE userName=:USERNAME";
+				Query query = session.createQuery(hqlQuery);
+				query.setParameter("USERNAME", userName);
+				int updateAttempt = (int) query.uniqueResult();
+
+				System.err.println("No of login attempt: " + updateAttempt);
+				return updateAttempt;
+			}
+			return 0;
+
+		} catch (HibernateException exp) {
+			session.getTransaction().rollback();
+			System.out.println("Session is RollBack...");
+			System.out.println(exp.getMessage());
+
+		} finally {
+			if (session != null) {
+				session.close();
+				System.out.println("Session is closed");
+			} else {
+				System.out.println("Session is not closed");
+			}
+
+		}
+		return 0;
+	}
+	
 	@Override
 	public int updateLoginAttempt(String userName, int curentAttempt) {
 		System.out.println("Invoked updateLoginAttempt");
@@ -95,41 +133,5 @@ public class LoginDAOImpl implements LoginDAO {
 		return 0;
 	}
 
-	@Override
-	public int getUpdateAttempt(String userName) {
-		System.out.println("Invoked getUpdateAttempt()...in dao");
-
-		Session session = null;
-		try {
-			String passwordNullCheck = this.isUserExist(userName);
-			if (passwordNullCheck != null) {
-
-				session = sessionFactory.openSession();
-				String hqlQuery = "SELECT loginAttempt FROM SignUpEntity WHERE userName=:USERNAME";
-				Query query = session.createQuery(hqlQuery);
-				query.setParameter("USERNAME", userName);
-				int updateAttempt = (int) query.uniqueResult();
-
-				System.err.println("No of login attempt: " + updateAttempt);
-				return updateAttempt;
-			}
-			return 0;
-
-		} catch (HibernateException exp) {
-			session.getTransaction().rollback();
-			System.out.println("Session is RollBack...");
-			System.out.println(exp.getMessage());
-
-		} finally {
-			if (session != null) {
-				session.close();
-				System.out.println("Session is closed");
-			} else {
-				System.out.println("Session is not closed");
-			}
-
-		}
-		return 0;
-	}
 
 }

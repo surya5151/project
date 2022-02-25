@@ -43,7 +43,7 @@
 			<label>Confirm-Password: </label><input type="password"
 				name="confirmPassword" placeholder="Re-Enter Your Password">
 			<p style="color: red;">${ConfirmPasswordNotValid}</p>
-				<p style="color: red;">${PASSWORD_NOT_MATCHED}</p>
+				<p style="color: red;">${PasswordNotMatched}</p>
 				
 				
 				 <input	type="Submit" value="Create Your Account">

@@ -39,6 +39,6 @@ public class AddMemberEntity {
 	private String vaccineType;
 
 	@Column(name="NO_OF_DOSE")
-	private String NoOfDose;
+	private String noOfDose;
 
 }

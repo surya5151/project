@@ -46,5 +46,8 @@ public class SignUpEntity {
 	@Column(name="LOGIN_ATTEMPT")
 	private int loginAttempt;
 	
+	@Column(name="ADD_MEMBER_COUNT")
+	private int addMemberCount;
+	
 
 }

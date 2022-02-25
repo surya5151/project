@@ -18,7 +18,7 @@
 
 			<h1 style="color:blue;text-align: center;">Welcome to OTP Verification page</h1>
 
-<h3>An OTP send to your email....</h3>
+<h3 style="color: green;">${message}</h3>
 <body>
 	<div align="center">
 	

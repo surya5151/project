@@ -6,10 +6,10 @@ public interface LoginDAO {
 
 	String isUserExist(String userName);
 
-	int updateLoginAttempt(String userName, int curentAttempt);
 
 	int getUpdateAttempt(String userName);
 
-	
+	int updateLoginAttempt(String userName, int curentAttempt);
+
 
 }

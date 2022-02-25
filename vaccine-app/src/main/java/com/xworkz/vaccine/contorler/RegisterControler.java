@@ -42,18 +42,19 @@ public class RegisterControler {
 			boolean issaved = this.registerService.saveOTP(emailID, otp);
 
 			if (isSendOTP && issaved) {
-
-				model.addAttribute("message", "OTP SEND TO YOUR REGISTED MAIL ID");
+			//	isSendOTP &&
+				model.addAttribute("message", "OTP send to your mailID and Also store in DB");
 
 				return "/WEB-INF/pages/VerifyOTP.jsp";
 			} else {
 				model.addAttribute("message", "OTP Sending failure...!!!");
+				return "RegisterVaccine.jsp";
 			}
 
 		} else {
 			model.addAttribute("message", "OTP Not Generated...!!!");
 		}
-		return "/RegisterVaccine.jsp";
+		return "RegisterVaccine.jsp";
 
 	}
 

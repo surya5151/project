@@ -31,6 +31,7 @@ public class SignUpControler {
 	
 	public static String password;
 	
+	public static String userName;
 	
 
 	@RequestMapping("/createAccount.vaccine")

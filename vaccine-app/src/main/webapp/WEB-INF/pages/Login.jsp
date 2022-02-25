@@ -15,11 +15,12 @@
 <a href="loginPage.vaccine" style="margin-left:70%">logIN</a>
  </header>
 
+
 <body>
 
 	<h1 style="text-align: center; color: blue;">Welcome to login pages</h1>
 <body>
-
+<h3 style="color: green;">${Reset_password_sucess}</h3>
 
 	<div align="center">
 	

@@ -42,6 +42,16 @@ public class LoginServiceImpl implements LoginService {
 		}
 		return flag;
 	}
+	
+	@Override
+	public boolean checkLoginAttemptExceeded(String userName) {
+		System.out.println("Invoked checkLoginAttemptExceeded()");
+		int attempt = this.loginDAO.getUpdateAttempt(userName);
+		if (attempt == 3) {
+			return true;
+		}
+		return false;
+	}
 
 	@Override
 	public boolean varifyUser(String userName, String password) {
@@ -64,14 +74,6 @@ public class LoginServiceImpl implements LoginService {
 		return false;
 	}
 
-	@Override
-	public boolean checkLoginAttemptExceeded(String userName) {
-		System.out.println("Invoked checkLoginAttemptExceeded()");
-		int attempt = this.loginDAO.getUpdateAttempt(userName);
-		if (attempt == 3) {
-			return true;
-		}
-		return false;
-	}
+	
 
 }

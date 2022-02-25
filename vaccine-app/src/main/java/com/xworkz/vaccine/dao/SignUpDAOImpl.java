@@ -48,7 +48,7 @@ public class SignUpDAOImpl implements SignUpDAO {
 
 	@Override
 	public String getPassword(String emailId) {
-		System.out.println("invoked getPassword() in signupDAO");
+		System.out.println("Invoked getPassword()... in signupDAO");
 
 		Session session = null;
 

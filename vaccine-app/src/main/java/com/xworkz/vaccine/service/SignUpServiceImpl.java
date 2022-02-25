@@ -94,6 +94,7 @@ public class SignUpServiceImpl implements SignUpService {
 		} else {
 			flag = false;
 			System.err.println("Password not matching");
+			
 			errorMap.put("PASSWORD_NOT_MATCHED", "Password not matched");
 			return flag;
 		}
@@ -103,8 +104,10 @@ public class SignUpServiceImpl implements SignUpService {
 	@Override
 	public boolean saveSignUPDTO(SignUpDTO signUpDTO) {
 		System.out.println("invoked saveSignUPDTO");
+		
 		signUpDTO.setPassword(encrypt.encode(signUpDTO.getPassword()));
-		SignUpEntity signUpEntity = new SignUpEntity();
+		
+		SignUpEntity signUpEntity = new SignUpEntity();		
 		BeanUtils.copyProperties(signUpDTO, signUpEntity);
 		signUpEntity.setEmailID(registerControler.emailID);
 
