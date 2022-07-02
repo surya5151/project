@@ -24,9 +24,6 @@ public class RegisterServiceImpl implements RegisterService {
 	@Autowired
 	private OTPDAO otpdao;
 
-
-		
-
 	public RegisterServiceImpl() {
 		System.out.println(this.getClass().getSimpleName() + " Bean Created");
 	}
@@ -125,7 +122,5 @@ public class RegisterServiceImpl implements RegisterService {
 
 		return false;
 	}
-
-	
 
 }
